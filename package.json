@@ -4,7 +4,7 @@
   "description": "Personal discord bot",
   "main": "index.js",
   "scripts": {
-    "test": "run test"
+    "run": "node index.js"
   },
   "author": "Mera",
   "license": "ISC",
