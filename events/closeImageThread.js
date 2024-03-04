@@ -1,10 +1,13 @@
 const { Events } = require('discord.js');
-const { RougeBot, imgChannels } = require('../config.json');
+const { rougebotId, imgChannels } = require('../config.json');
 
 module.exports = {
     name: Events.ThreadCreate,
     async execute(event) {
-        if (event.ownerId != RougeBot || !(event.parentId in imgChannels)) return; 
+        if (event.ownerId != rougebotId || !imgChannels.includes(event.parentId)) {
+            console.log("condition check failed");
+            return;
+        }
 
         const { client } = event;
 
@@ -13,6 +16,7 @@ module.exports = {
         
         setTimeout(async () => {
             await thread.setArchived(true);
+            console.log("Thread closed");
         }, 500);
     }
 }
